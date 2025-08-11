@@ -99,9 +99,3 @@ Contribuições são sempre bem-vindas\! Se você tem ideias para melhorar o pro
 3.  Faça suas alterações e **commit**-as (`git commit -m 'feat: adicionei nova funcionalidade'`).
 4.  Envie o branch para o seu fork (`git push origin minha-nova-feature`).
 5.  Abra um **Pull Request** no repositório original.
-
------
-
-## 📝 **Licença**
-
-Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT).
