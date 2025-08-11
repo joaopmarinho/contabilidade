@@ -1,86 +1,111 @@
-# 🤖 **Bot de Finanças Pessoais (Telegram + Google Sheets)**
+Com certeza\! Aqui está um modelo de `README.md` detalhado e formatado, pronto para ser usado no GitHub, com base na arquitetura de código aberto que discutimos.
 
-Este projeto é uma solução de baixo código para gerenciar finanças pessoais de forma colaborativa, utilizando um bot do Telegram para registrar despesas, uma planilha do Google Sheets para armazenar os dados e um dashboard do Looker Studio para visualização.
+-----
 
-A ideia é permitir que um grupo de pessoas (família, amigos, etc.) registre seus gastos de forma simples, enviando mensagens a um bot, e visualize um resumo financeiro em tempo real.
+# 🤖 **Finanças Colaborativas: Bot de Telegram Open Source**
 
----
+Este projeto é uma solução de código aberto para gerenciar finanças pessoais ou de um grupo de forma colaborativa, utilizando um bot do Telegram para registrar despesas e um dashboard web para visualização dos dados. O objetivo é fornecer uma ferramenta simples, transparente e totalmente customizável para quem quer ter controle total sobre seus dados.
 
-## 🚀 **Tecnologias Utilizadas**
+## 🚀 **Características**
 
-* **Telegram:** Plataforma do chatbot.
-* **Google Sheets:** Banco de dados simples para armazenar os registros.
-* **Make (ex-Integromat):** Plataforma de automação que conecta o Telegram ao Google Sheets.
-* **Google Looker Studio (ex-Data Studio):** Ferramenta de visualização para criar dashboards.
-* **QuickChart.io (opcional):** Para gerar gráficos dinâmicos a partir dos dados.
+  - **Registro de Despesas via Telegram:** Envie mensagens simples ao bot para registrar gastos (ex: "compra mercado 150").
+  - **Dados Privados:** Cada usuário possui seus dados vinculados ao seu ID do Telegram.
+  - **Dashboard Web:** Visualize suas finanças com gráficos e tabelas detalhadas.
+  - **Controle Total:** Por ser open source, você pode modificar o bot, a lógica de dados e o dashboard como preferir.
 
----
+## 🛠️ **Tecnologias Utilizadas**
 
-## 🛠️ **Pré-requisitos**
+  - **Linguagem:** Python 3.x
+  - **Bot:** `python-telegram-bot`
+  - **Servidor Web:** `Flask`
+  - **Banco de Dados:** `SQLite3` (integrado ao Python, sem necessidade de instalação externa)
+  - **Gráficos:** `Matplotlib` e `Plotly`
 
-Para replicar este projeto, você precisará de:
+## ⚙️ **Pré-requisitos**
 
-* Uma conta no **Telegram**.
-* Uma conta do **Google** (para Google Sheets e Looker Studio).
-* Uma conta gratuita no **Make**.
+Antes de começar, certifique-se de que você tem:
 
----
+  * **Python 3.x** instalado.
+  * **pip**, o gerenciador de pacotes do Python.
+  * Um **Token de Acesso do BotFather** para seu bot do Telegram.
 
-## 💡 **Como Configurar o Projeto (Passo a Passo)**
+## 🚀 **Instalação e Uso**
 
-Siga estes passos para ter sua própria versão do bot funcionando.
+Siga estes passos para ter o bot e o dashboard rodando na sua máquina.
 
-### Passo 1: Crie o Bot no Telegram
+### Passo 1: Clone o Repositório
 
-1.  Abra o Telegram e procure por **@BotFather**.
-2.  Envie o comando `/newbot`.
-3.  Escolha um nome para o seu bot (ex: "Meu Financinhas").
-4.  Escolha um username que termine em "bot" (ex: "meufinancas_bot").
-5.  O BotFather irá gerar um **Token de Acesso**. Copie-o, pois você precisará dele para o próximo passo.
+Abra o terminal e execute o comando abaixo para baixar o projeto:
 
-### Passo 2: Prepare a Planilha do Google Sheets
+```sh
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+```
 
-1.  Acesse o Google Sheets e **crie uma nova planilha**.
-2.  Na primeira linha, crie as seguintes colunas:
-    * `Data`
-    * `Descricao`
-    * `Valor`
-    * `Usuario`
-3.  Certifique-se de que a planilha esteja acessível para a sua conta do Make.
+### Passo 2: Crie e Ative um Ambiente Virtual
 
-### Passo 3: Monte o Fluxo de Automação no Make
+É uma boa prática criar um ambiente virtual para isolar as dependências do projeto.
 
-1.  Acesse sua conta no **Make** e crie um novo "Cenário".
-2.  **Módulo 1 (Webhook do Telegram):**
-    * Escolha o aplicativo **Telegram Bot**.
-    * Selecione o módulo `Watch Updates`.
-    * Conecte sua conta do Telegram usando o Token de Acesso do seu bot.
-    * Configure para que o Make "escutar" as mensagens recebidas pelo bot.
-3.  **Módulo 2 (Adicionar linha ao Google Sheets):**
-    * Adicione o aplicativo **Google Sheets**.
-    * Selecione o módulo `Add a Row`.
-    * Conecte sua conta do Google e selecione a planilha que você criou.
-    * Mapeie os dados da seguinte forma:
-        * `Data`: Use a função de data do Make (`now`).
-        * `Descricao`: Use o conteúdo da mensagem do Telegram (`Text`).
-        * `Valor`: Extraia o número da mensagem (você pode precisar de uma expressão regular para isso).
-        * `Usuario`: Use o nome do usuário que enviou a mensagem (`From: First Name`).
-4.  **Ative seu cenário.** Agora, toda mensagem enviada ao bot será registrada na planilha.
+```sh
+python3 -m venv venv
+source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
+```
 
-### Passo 4: Crie o Dashboard no Looker Studio
+### Passo 3: Instale as Dependências
 
-1.  Acesse o **Looker Studio** e crie um novo "Relatório".
-2.  Clique em **"Adicionar dados"** e escolha a opção `Google Sheets`.
-3.  Selecione a planilha que você criou no passo 2.
-4.  Use as ferramentas do Looker Studio para criar gráficos de pizza, barras, tabelas e indicadores que mostrem um resumo das finanças.
-5.  **Compartilhe o dashboard** com quem você quiser, usando a opção de link para visualização.
+Instale todas as bibliotecas necessárias listadas no arquivo `requirements.txt`:
 
----
+```sh
+pip install -r requirements.txt
+```
+
+### Passo 4: Configure o Bot
+
+1.  Crie um arquivo chamado `.env` na raiz do projeto.
+
+2.  Adicione seu token de acesso do Telegram neste arquivo, no seguinte formato:
+
+    ```ini
+    TELEGRAM_TOKEN=SEU_TOKEN_DO_BOT_AQUI
+    ```
+
+### Passo 5: Inicie o Bot e o Dashboard
+
+O projeto está pronto para rodar\! Execute o arquivo principal para iniciar a aplicação:
+
+```sh
+python3 app.py
+```
+
+O bot será ativado e o servidor web do dashboard estará disponível em `http://127.0.0.1:5000`.
+
+## 🤖 **Como Usar o Bot**
+
+  - Envie mensagens ao bot para registrar despesas. O formato da mensagem deve ser: `[descrição] [valor]`.
+  - **Exemplo:** `compra de mercado 150.50`
+
+O bot irá processar a mensagem, extrair a descrição (`compra de mercado`), o valor (`150.50`) e associar a despesa ao seu ID de usuário.
+
+## 📊 **Dashboard**
+
+Acesse o endereço `http://127.0.0.1:5000` no seu navegador para ver o dashboard. Ele exibirá:
+
+  - Um gráfico de pizza com a distribuição das suas despesas por categoria.
+  - Uma tabela com o histórico de gastos mais recentes.
+  - Filtros para visualizar seus próprios dados ou os dados de outros colaboradores, se houver.
 
 ## 🤝 **Como Contribuir**
 
-Este projeto é um ponto de partida. Sinta-se à vontade para:
+Contribuições são sempre bem-vindas\! Se você tem ideias para melhorar o projeto, encontrou um bug ou quer adicionar novas funcionalidades, siga estes passos:
 
-* Abrir **Issues** para relatar bugs ou sugerir novas funcionalidades.
-* Enviar **Pull Requests** com melhorias de código ou novas ideias de automação.
-* Compartilhar sua experiência e soluções para aprimorar a documentação.
+1.  Faça um **fork** deste repositório.
+2.  Crie um **branch** para sua feature (`git checkout -b minha-nova-feature`).
+3.  Faça suas alterações e **commit**-as (`git commit -m 'feat: adicionei nova funcionalidade'`).
+4.  Envie o branch para o seu fork (`git push origin minha-nova-feature`).
+5.  Abra um **Pull Request** no repositório original.
+
+-----
+
+## 📝 **Licença**
+
+Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT).
