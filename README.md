@@ -1,7 +1,3 @@
-Com certeza\! Aqui está um modelo de `README.md` detalhado e formatado, pronto para ser usado no GitHub, com base na arquitetura de código aberto que discutimos.
-
------
-
 # 🤖 **Finanças Colaborativas: Bot de Telegram Open Source**
 
 Este projeto é uma solução de código aberto para gerenciar finanças pessoais ou de um grupo de forma colaborativa, utilizando um bot do Telegram para registrar despesas e um dashboard web para visualização dos dados. O objetivo é fornecer uma ferramenta simples, transparente e totalmente customizável para quem quer ter controle total sobre seus dados.
